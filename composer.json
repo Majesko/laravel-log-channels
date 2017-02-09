@@ -1,0 +1,20 @@
+{
+    "name": "majesko/logger",
+    "description": "Extended laravel logger with pseudo channels that are based on monolog handlers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vasily Boriskin",
+            "email": "majesko@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Majesko\\Logger\\": "src/Logger/"
+        }
+    }
+}
