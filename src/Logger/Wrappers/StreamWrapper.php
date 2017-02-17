@@ -4,11 +4,13 @@ namespace Majesko\Logger\Wrappers;
 
 use Monolog\Handler\StreamHandler;
 
-class StreamWrapper extends BaseWrapper {
+class StreamWrapper extends BaseWrapper
+{
 
-	public function getHandler() {
-		$handler = new StreamHandler($this->params['target'].$this->params['filename']);
+    public function getHandler()
+    {
+        $handler = new StreamHandler($this->params['target'] . $this->params['filename']);
 
-		return $handler;
-	}
+        return $handler;
+    }
 }

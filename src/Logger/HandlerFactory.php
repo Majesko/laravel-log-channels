@@ -6,28 +6,31 @@ use Majesko\Logger\Wrappers\BaseWrapper;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\HandlerInterface;
 
-class HandlerFactory {
+class HandlerFactory
+{
 
-	public static function buildHandler($params) {
+    public static function buildHandler($params)
+    {
 
-		/** @var BaseWrapper $factory */
-		$factory = new $params['handler']($params);
+        /** @var BaseWrapper $factory */
+        $factory = new $params['handler']($params);
 
-		if(!$factory instanceof BaseWrapper) {
-			throw new \Exception('Invalid handler wrapper, check your configuration');
-		}
+        if (!$factory instanceof BaseWrapper) {
+            throw new \Exception('Invalid handler wrapper, check your configuration');
+        }
 
-		/** @var HandlerInterface $handler */
-		$handler = $factory->getHandler();
+        /** @var HandlerInterface $handler */
+        $handler = $factory->getHandler();
 
-		if(isset($params['formatter'])) {
-			self::applyFormatter($handler, $params['formatter']);
-		}
+        if (isset($params['formatter'])) {
+            self::applyFormatter($handler, $params['formatter']);
+        }
 
-		return $handler;
-	}
+        return $handler;
+    }
 
-	private static function applyFormatter(HandlerInterface $handler, FormatterInterface $formatter) {
-		$handler->setFormatter($formatter);
-	}
+    private static function applyFormatter(HandlerInterface $handler, FormatterInterface $formatter)
+    {
+        $handler->setFormatter($formatter);
+    }
 }

@@ -4,23 +4,26 @@ namespace Majesko\Logger\Wrappers;
 
 use Monolog\Formatter\FormatterInterface;
 
-abstract class BaseWrapper {
+abstract class BaseWrapper
+{
 
-	protected $params;
+    protected $params;
 
-	public function __construct(array $params) {
-		$this->params = $params;
-	}
+    public function __construct(array $params)
+    {
+        $this->params = $params;
+    }
 
-	public abstract function getHandler();
+    public abstract function getHandler();
 
-	/**
-	 * @param FormatterInterface $formatter
-	 * @return $this
-	 */
-	public function setFormatter(FormatterInterface $formatter) {
-		$this->setFormatter($formatter);
+    /**
+     * @param FormatterInterface $formatter
+     * @return $this
+     */
+    public function setFormatter(FormatterInterface $formatter)
+    {
+        $this->setFormatter($formatter);
 
-		return $this;
-	}
+        return $this;
+    }
 }
