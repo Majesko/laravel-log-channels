@@ -25,7 +25,7 @@ class Logger extends Writer
         parent::__construct($monolog, $dispatcher);
         $this->flushChannels(); // protection from fools, and possible bugs from laravel bootstrap process
 
-        $this->globalChannels = config('logger.channels.global');
+        $this->globalChannels = config('logger.channels.global') ?: [];
 
         if (!$this->channels) {
             $this->channels = $this->globalChannels;

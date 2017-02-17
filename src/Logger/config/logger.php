@@ -8,7 +8,7 @@ return [
     'app_tag' => 'app',
 
     'channels' => [
-        'global' => ['main', 'es'],
+        'global' => ['main'],
 
         'main' => [
             'filename' => 'local.log',
