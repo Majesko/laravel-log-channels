@@ -23,11 +23,6 @@ return [
             'target' => storage_path('logs/migrations/'),
             'log_max_files' => config('app.log_max_files')
         ],*/
-        /*'redis' => [
-            'handler' => \App\Extensions\Logger\Wrappers\RedisWrapper::class,
-            'formatter' => new \Monolog\Formatter\LogstashFormatter(config('logger.app_tag')),
-            'index' => 'logstash-tenders'
-        ],*/
         /*'es' => [
             'filename' => 'es.log',
             'handler' => \Majesko\Logger\Wrappers\RotatingFileWrapper::class,
