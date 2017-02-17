@@ -90,7 +90,7 @@ class Logger extends Writer
             }
 
             $handlerParams = config('logger.channels')[$channel];
-            $handler = HandlerFactory::buildHandler($handlerParams);
+            $handler = HandlerFactory::buildHandler($handlerParams['handler'], $handlerParams);
 
             $this->monolog->pushHandler($handler);
         }

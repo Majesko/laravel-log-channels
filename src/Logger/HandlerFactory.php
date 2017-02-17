@@ -9,11 +9,11 @@ use Monolog\Handler\HandlerInterface;
 class HandlerFactory
 {
 
-    public static function buildHandler($params)
+    public static function buildHandler($handler, $params)
     {
 
         /** @var BaseWrapper $factory */
-        $factory = new $params['handler']($params);
+        $factory = new $handler($params);
 
         if (!$factory instanceof BaseWrapper) {
             throw new \Exception('Invalid handler wrapper, check your configuration');
