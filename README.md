@@ -1,6 +1,6 @@
 # Library for organization pseudo logging channels in laravel 5.1+ applications
 ## Installation steps
-1. Add to composer required section "majesko/logger": "1.0.x"
+1. Add to composer required section "majesko/logger": "1.0.*"
 2. Add LoggerServiceProvider into service provider section of app.php
 2. Publish config file with command php artisan vendor:publish --tag="logger"
 3. Uncomment or needed channels in logger.php

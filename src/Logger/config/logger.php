@@ -11,7 +11,7 @@ return [
         'global' => ['main'],
 
         'main' => [
-            'filename' => 'local.log',
+            'filename' => 'laravel.log',
             'handler' => \Majesko\Logger\Wrappers\RotatingFileWrapper::class,
             'target' => storage_path('logs/'),
             'log' => 'daily',
