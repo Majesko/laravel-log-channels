@@ -8,7 +8,7 @@ return [
     'app_tag' => 'app',
 
     'channels' => [
-        'global' => ['main'],
+        'default' => ['main'],
 
         'main' => [
             'filename' => 'laravel.log',

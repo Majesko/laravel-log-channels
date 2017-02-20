@@ -11,7 +11,7 @@ class Logger extends Writer
 {
 
     private $channels;
-    protected $globalChannels;
+    protected $defaultChannels;
 
     /**
      * Create a new log writer instance.
@@ -25,15 +25,15 @@ class Logger extends Writer
         parent::__construct($monolog, $dispatcher);
         $this->flushChannels(); // protection from fools, and possible bugs from laravel bootstrap process
 
-        $this->globalChannels = config('logger.channels.global') ?: [];
+        $this->defaultChannels = config('logger.channels.default') ?: [];
 
         if (!$this->channels) {
-            $this->channels = $this->globalChannels;
+            $this->channels = $this->defaultChannels;
         }
 
         $this->monolog = $monolog;
 
-        $this->attachChannels($this->globalChannels);
+        $this->attachChannels($this->defaultChannels);
 
         if (isset($dispatcher)) {
             $this->dispatcher = $dispatcher;
@@ -46,7 +46,7 @@ class Logger extends Writer
      * @param  string $level
      * @param  string $message
      * @param  array $context
-     * @return void
+     * @return Logger
      */
     protected function writeLog($level, $message, $context)
     {
@@ -68,6 +68,7 @@ class Logger extends Writer
     public function setChannels($channels = ['default'])
     {
         $this->channels = (array)$channels;
+        $this->flushChannels();
         $this->attachChannels($this->channels);
 
         return $this;
@@ -109,12 +110,12 @@ class Logger extends Writer
     }
 
     /**
-     * Restores handler stack to global default
+     * Restores handler stack to default stack
      */
     public function restoreChannels()
     {
         $this->flushChannels();
-        $this->channels = $this->globalChannels;
+        $this->channels = $this->defaultChannels;
         $this->attachChannels($this->channels);
     }
 
