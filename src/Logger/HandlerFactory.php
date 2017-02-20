@@ -11,7 +11,6 @@ class HandlerFactory
 
     public static function buildHandler($handler, $params)
     {
-
         /** @var BaseWrapper $factory */
         $factory = new $handler($params);
 

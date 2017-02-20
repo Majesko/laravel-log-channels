@@ -14,6 +14,7 @@ return [
             'filename' => 'laravel.log',
             'handler' => \Majesko\Logger\Wrappers\RotatingFileWrapper::class,
             'target' => storage_path('logs/'),
+            'formatter' => new \Monolog\Formatter\LineFormatter(null, null, true, true),
             'log' => 'daily',
             'log_max_files' => config('app.log_max_files')
         ],
