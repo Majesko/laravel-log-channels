@@ -22,7 +22,11 @@ class HandlerFactory
         $handler = $factory->getHandler();
 
         if (isset($params['formatter'])) {
-            self::applyFormatter($handler, $params['formatter']);
+            $class = $params['formatter']['class'];
+            $args = $params['formatter']['args'];
+            $formatter = new $class(...$args);
+
+            self::applyFormatter($handler, $formatter);
         }
 
         return $handler;

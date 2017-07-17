@@ -14,7 +14,10 @@ return [
             'filename' => 'laravel.log',
             'handler' => \Majesko\Logger\Wrappers\RotatingFileWrapper::class,
             'target' => storage_path('logs/'),
-            'formatter' => new \Monolog\Formatter\LineFormatter(null, null, true, true),
+            'formatter' => [
+                'class' => \Monolog\Formatter\LineFormatter::class,
+                'args' => [null, null, true, false]
+            ],
             'log' => 'daily',
             'log_max_files' => config('app.log_max_files')
         ],
@@ -28,7 +31,10 @@ return [
             'filename' => 'es.log',
             'handler' => \Majesko\Logger\Wrappers\RotatingFileWrapper::class,
             'target' => storage_path('logs/es/'),
-            'formatter' => new \Monolog\Formatter\LogstashFormatter(config('logger.app_tag')),
+            'formatter' => [
+                'class' => Monolog\Formatter\JsonFormatter::class,
+                'args' => [],
+            ],
             'log' => 'daily',
             'log_max_files' => 0
         ]*/
